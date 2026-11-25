@@ -22,6 +22,17 @@
     "extra": {}
   },
   {
+    "forening": "Varberg",
+    "titel": "Virtuost samspel – Dalene och Iivonen",
+    "datum": "2026-11-29",
+    "tid": "18:00",
+    "lokal": "Rosenfredsskolans konsertsal",
+    "pris": null,
+    "lank": "https://varbergskonsertforening.se/program/virtuost-samspel-dalene-och-ivonen/",
+    "festival": null,
+    "extra": {}
+  },
+  {
     "forening": "Halmstad",
     "titel": "Mozarts Trollflöjten",
     "datum": "2026-12-08",
@@ -29,6 +40,17 @@
     "lokal": "Biograf Röda Kvarn i Halmstad",
     "pris": null,
     "lank": "https://nortic.se/ticket/show/362022",
+    "festival": null,
+    "extra": {}
+  },
+  {
+    "forening": "Varberg",
+    "titel": "Trettondagskonsert",
+    "datum": "2027-01-06",
+    "tid": "18:00",
+    "lokal": "Varbergs teater",
+    "pris": null,
+    "lank": "https://varbergskonsertforening.se/program/trettondagskonsert-2/",
     "festival": null,
     "extra": {}
   },
@@ -66,6 +88,17 @@
     "extra": {}
   },
   {
+    "forening": "Varberg",
+    "titel": "Pianoafton – Gustav Piekut",
+    "datum": "2027-02-14",
+    "tid": "18:00",
+    "lokal": "Varbergs teater",
+    "pris": null,
+    "lank": "https://varbergskonsertforening.se/program/pianoafton-gustav-piekut/",
+    "festival": null,
+    "extra": {}
+  },
+  {
     "forening": "Falkenberg",
     "titel": "Göran Söllscher (gitarr) – Musik av Villa-Lobos, Bach, Pärt och Ponce.",
     "datum": "2027-02-20",
@@ -88,6 +121,17 @@
     "extra": {}
   },
   {
+    "forening": "Varberg",
+    "titel": "Let’s make some noise! – Ode to Noise",
+    "datum": "2027-03-07",
+    "tid": "18:00",
+    "lokal": "Varbergs teater",
+    "pris": null,
+    "lank": "https://varbergskonsertforening.se/program/ode-to-noise/",
+    "festival": null,
+    "extra": {}
+  },
+  {
     "forening": "Laholm",
     "titel": "Yura Lee/ Julia Hamos/ Kristina Winiarski",
     "datum": "2027-03-14",
@@ -106,6 +150,17 @@
     "lokal": "Argus, Argussalen",
     "pris": null,
     "lank": "https://www.falkenbergskonsertforening.se/program-26-27/11/11.html",
+    "festival": null,
+    "extra": {}
+  },
+  {
+    "forening": "Varberg",
+    "titel": "Semper Dowland – Semper Dolens – Martin Vanberg",
+    "datum": "2027-04-04",
+    "tid": "18:00",
+    "lokal": "Varbergs teater",
+    "pris": null,
+    "lank": "https://varbergskonsertforening.se/program/semper-dowland-semper-dolens/",
     "festival": null,
     "extra": {}
   },
