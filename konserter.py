@@ -201,6 +201,63 @@ def varberg() -> list[Konsert]:
         log("varberg kort:", lines)
         out.append(Konsert("Varberg", titel, d.isoformat(), parse_time(whole), lokal,
                            lank=href, festival=festival_of(whole)))
+    if not out:
+        log("varberg: inga kort med länkar, provar API + sidtext")
+        out = varberg_fallback(base, soup)
+    return out
+
+
+def norm(s: str) -> str:
+    return re.sub(r"[^a-zåäö0-9]", "", clean(s).lower())
+
+
+VENUE_RE = re.compile(r"teater|sal\b|salen|arena|kyrka|hall|skola|aula|konserthus", re.I)
+WEEKDAY_RE = re.compile(r"^(mån|tis|ons|tors|fre|lör|sön)\w*\.?$", re.I)
+
+
+def varberg_fallback(base: str, soup: BeautifulSoup) -> list[Konsert]:
+    """Titlar och länkar från WordPress-API:t, datum/tid/lokal från generalprogrammets text."""
+    items = fetch(base + "/wp-json/wp/v2/program?per_page=100").json()
+    lines = text_lines(soup.body or soup)
+    nlines = [norm(l) for l in lines]
+
+    # Hitta raden där varje titel står på sidan
+    hits = []
+    for it in items:
+        titel = clean(it["title"]["rendered"])
+        key = norm(titel)[:25]
+        idx = next((i for i, nl in enumerate(nlines) if key and key in nl), None)
+        if idx is None:
+            log("varberg: hittade inte titeln på sidan:", titel)
+            continue
+        hits.append((idx, titel, it.get("link"), it.get("content", {}).get("rendered", "")))
+    hits.sort()
+    if not hits:
+        return []
+
+    # Står datumet före eller efter titeln? Kolla raderna efter sista titeln.
+    last = hits[-1][0]
+    after = any(DATE_RE.search(l) for l in lines[last + 1:last + 6])
+
+    out = []
+    for n, (idx, titel, link, content) in enumerate(hits):
+        if after:
+            end = hits[n + 1][0] if n + 1 < len(hits) else idx + 6
+            seg = lines[idx + 1:end]
+        else:
+            start = hits[n - 1][0] + 1 if n > 0 else max(0, idx - 6)
+            seg = lines[start:idx]
+        seg_text = " ".join(seg)
+        d = parse_date(seg_text)
+        if not d:
+            log("varberg: inget datum för", titel, seg)
+            continue
+        lokal = next((l for l in seg if VENUE_RE.search(l) and not DATE_RE.search(l)), None)
+        if not lokal:
+            lokal = next((l for l in seg if not (DATE_RE.search(l) or TIME_RE.search(l)
+                          or WEEKDAY_RE.match(l) or l.lower().startswith("läs mer"))), None)
+        out.append(Konsert("Varberg", titel, d.isoformat(), parse_time(seg_text), lokal,
+                           lank=link, festival=festival_of(titel + " " + content)))
     return out
 
 
