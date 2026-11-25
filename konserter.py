@@ -353,7 +353,8 @@ def halmstad() -> list[Konsert]:
                 lokal = lines[i + 1]
             log("halmstad rad:", lines[max(0, i - 1):i + 4])
             out.append(Konsert("Halmstad", titel or "(okänd titel)", d.isoformat(), tid,
-                               lokal or None, lank=nortic or url))
+                               lokal or None, lank=url,
+                               extra={"biljetter": nortic} if nortic else {}))
     return out
 
 
