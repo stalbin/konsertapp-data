@@ -39,9 +39,11 @@
     "tid": "15:00",
     "lokal": "Biograf Röda Kvarn i Halmstad",
     "pris": null,
-    "lank": "https://nortic.se/ticket/show/362022",
+    "lank": "https://www.halmstadskonsertforening.se/",
     "festival": null,
-    "extra": {}
+    "extra": {
+      "biljetter": "https://nortic.se/ticket/show/362022"
+    }
   },
   {
     "forening": "Varberg",
